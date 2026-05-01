@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { collection, query, where, onSnapshot, updateDoc, doc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
 import { useAuth } from '@/lib/context/AuthContext'
@@ -8,7 +8,7 @@ import { Issue, ISSUE_COLORS } from '@/lib/types'
 import Navbar from '@/components/Navbar'
 import { useSearchParams } from 'next/navigation'
 
-export default function MyReportsPage() {
+function MyReportsContent() {
   const { user } = useAuth()
   const searchParams = useSearchParams()
   const [issues, setIssues] = useState<Issue[]>([])
@@ -169,5 +169,25 @@ export default function MyReportsPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function MyReportsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50">
+          <Navbar />
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
+              <p className="mt-4 text-gray-600">Loading your reports...</p>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <MyReportsContent />
+    </Suspense>
   )
 }
