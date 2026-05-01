@@ -1,0 +1,30 @@
+{
+  "name": "fixmystreet-patna",
+  "version": "1.0.0",
+  "description": "A hyperlocal civic issue reporting web application",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next": "^14.2.0",
+    "firebase": "^10.8.0",
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "tailwindcss": "^3.4.1",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@types/node": "^20.10.5",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.2.0"
+  }
+}
